@@ -4,23 +4,28 @@ public class Course {
     private String requirement;
     private String date;
     private String id;
-    private DataControl dataControl; // 添加对DataControl的引用
+    private DataControl dataControl; 
 
-    public Course(String coursename, String directorName, String requirement, String date, String id, DataControl dataControl) {
-        this.coursename = coursename;
+    public Course(String directorName, String date, String id, DataControl dataControl) {
         this.directorName = directorName;
-        this.requirement = requirement;
-        this.date = date;
         this.id = id;
-        this.dataControl = dataControl; // 初始化DataControl引用
+        this.dataControl = dataControl;
     }
 
-    public void saveCourse(){
-        // 使用dataControl来保存课程信息到数据库
-        dataControl.open(this.directorName);
-        dataControl.wirte(this.directorName, this.coursename, this.requirement, this.date, this.id, this.dataControl);
-        dataControl.create(this.date); 
-        datacontrol.close(this.directorName);
+    public void saveCourse() {
+        try {
+            dataControl.open(); 
+            dataControl.write(this.coursename, this.directorName, this.requirement, this.date, this.id);
+            dataControl.close(); 
+        } catch (Exception e) {
+            System.out.println("Error occurred while saving the course: " + e.getMessage());
+        } finally {
+            try {
+                dataControl.close();
+            } catch (Exception e) {
+                System.out.println("Error occurred while closing the data control: " + e.getMessage());
+            }
+        }
     }
 
 }
