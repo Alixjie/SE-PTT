@@ -1,42 +1,57 @@
 package roles;
+import java.util.Scanner;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class Staff {
-    private String id;
+public abstract class Staff {
+    private int id;
     private String name;
     private String role;
-    private String password;
-    protected Set<String> permissions;
 
-    private static final Set<String> STAFF_PERMISSIONS = Set.of("get_course_info");
+//    public void functionOne() {
+//    }
+//    public void functionTwo() {
+//    }
 
-    public Staff(String id, String name, String role, String password) {
-        this.id = id;
+    public abstract void showFunctionality();
+    // System.out.println("You can choose the function by number");
+    // System.out.println("1. FunctionOne");
+    // System.out.println("2. FunctionTwo");
+    // System.out.println("...");
+    // System.out.println("n. Exit");
+//    Scanner in = new Scanner(System.in);
+//    int choice = in.nextInt();
+//    switch (choice){
+//        case 1:
+//            FunctionOne();
+//            break;
+//        case 2:
+//            FunctionOne();
+//            break;
+//        case n:
+//            Main.goBackToMain();
+//    }
+
+
+    public void setName(String name) {
         this.name = name;
-        this.password = password;
-        this.role = role;
-        this.permissions = new HashSet<>();
-        this.permissions.addAll(STAFF_PERMISSIONS);
     }
 
-    public boolean checkPassword(String password) {
-        return this.password.equals(password);
+    public void setId(int id) {
+        this.id = id;
     }
-    public String getId() {
-        return id;
+
+    public void setrole(String role) {
+        this.role = role;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getRole() {
-        return role;
+    public int getId() {
+        return id;
     }
 
-    public Set<String> getPermissions() {
-        return permissions;
+    public String getrole() {
+        return role;
     }
 }
