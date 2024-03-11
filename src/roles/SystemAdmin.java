@@ -1,18 +1,17 @@
 package roles;
 
-import java.util.Set;
+import system.Constants;
 
 public class SystemAdmin extends Staff {
 
-    private static final Set<String> SystemAdmin_PERMISSIONS = Set.of
-    ("modify_all_course_requirement",
-    "view_course_requirement"
-        // Add more permissions here
-    );
+    public SystemAdmin(String id, String name) {
+        super(id, name, Constants.roles.valueOf("RoleSystemAdmin"));
+    }
 
-    public SystemAdmin(String id, String name, String password) {
-        super(id, name, "SystemAdmin", password);
-        this.permissions.addAll(SystemAdmin_PERMISSIONS);
+    @Override
+    public void showFunctionality() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'showFunctionality'");
     }
 
 }

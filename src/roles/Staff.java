@@ -1,11 +1,21 @@
 package roles;
-import java.util.Scanner;
+
+import system.Constants.roles;
 
 public abstract class Staff {
-    private int id;
+    private String id;
     private String name;
-    private String role;
+    private roles role;
 
+    public Staff(String id) {
+        this.id = id;
+    }
+
+    public Staff(String id, String name, roles role) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
+    }
 //    public void functionOne() {
 //    }
 //    public void functionTwo() {
@@ -35,11 +45,11 @@ public abstract class Staff {
         this.name = name;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public void setrole(String role) {
+    public void setrole(roles role) {
         this.role = role;
     }
 
@@ -47,11 +57,11 @@ public abstract class Staff {
         return name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public String getrole() {
+    public roles getrole() {
         return role;
     }
 }
