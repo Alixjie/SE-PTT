@@ -3,7 +3,7 @@ public class User {
     private String Password;
     private int Type;
 
-    public void User(String name, String password, int type) {
+    public User(String name, String password, int type) {
         setName(name);
         setPassword(password);
         setType(type);
