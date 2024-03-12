@@ -1,0 +1,41 @@
+staff:
+coursrdirector	finish
+course finish
+
+ptt:
+String id. string name, List<String> courseList, List<String> FinishedTrainning
+
+admin:
+String id. string name
+
+training:
+String uuid. string name,String teather, LocalDate Date，List<String> ParticiantIDs 
+
+
+我需要用到的function:
+
+AllPTTs
+allPTTs.showAllPTTs()
+allPTTs.findPTTByID
+allPTTs.addPTT(PTTId, PTTName);
+allPTTs.deletePTT(PTTId);
+allPTTs.saveAllPTTs()
+
+Alltrainings
+alltrainings.showAllTrainings()
+alltrainings.findTrainingByID
+alltrainings.saveAllTrainings()
+alltrainings.addTraining(trainingId, trainingName);
+
+allCourseDirectors.showAllCourseDirectors()
+allCourseDirectors.saveAllCourseDirectors(
+
+
+下面三个特别说一下，是修改完一个class后同步相关的其他类型的class用的，比如修改完course的directorid属性，要同步修改对应director的courselist属性
+这三个我已经写好了，暂时放在AllCourseDIrectors.java的最后，需要你挪到合适的位置
+allPTTs.syncCourseUpdatePTT(oldTeacherId, newTeacherId);
+allPTTs.syncTrainingUpdatePTT(oldPTTIds, newPTTsIds);
+allCourseDirectors.syncCourseUpdateDirector(oldDirectorId, newDirectorId)
+
+
+

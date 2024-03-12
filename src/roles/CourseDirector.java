@@ -2,14 +2,15 @@ package roles;
 
 import static system.Constants.roles.RoleCourseDirector;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import course.AllCourses;
 import course.Course;
 import system.Main;
+import system.Data.DataCourseDIrectors;
+import system.Data.DataCourses;
 
 /**
  * Filename: Coursedirector.java
@@ -60,8 +61,8 @@ public class CourseDirector extends Staff{
 
     @Override
     public void showFunctionality() {
-        AllCourses allCourses = new AllCourses();
-        AllCourseDIrectors allCourseDirectors = new AllCourseDIrectors();
+        DataCourses allCourses = new DataCourses();
+        DataCourseDIrectors allCourseDirectors = new DataCourseDIrectors();
         CourseDirector selfCourseDirector = allCourseDirectors.findCourseDirectorByID(this.getId());       
 
         Scanner scanner = new Scanner(System.in);
@@ -116,7 +117,12 @@ public class CourseDirector extends Staff{
                 }
         } while (choice != 0);
 
-        allCourses.saveAllCourses();
+        try {
+            allCourses.saveAllCourses();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         scanner.close();
         Main.goBackToMain();
     }
@@ -128,17 +134,5 @@ public class CourseDirector extends Staff{
         System.out.println("Courses: " + (this.courseList != null ? String.join(", ", this.courseList) : "N/A"));
     }
 
-    public static CourseDirector fromString(String String) {
-        String[] parts = String.split(",");
-        String id = parts[0];
-        String name = parts[1];
-        List<String> Courses = Arrays.asList(parts[2].split(";"));
-        return new CourseDirector(id, name, Courses);
-    }
-
-    @Override
-    public String toString() {
-        return this.getId() + "," + this.getName()  + "," +  String.join(";", this.getCourseList());
-    }
     
 }

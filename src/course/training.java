@@ -11,19 +11,19 @@ import system.Constants.roles;
 import static system.Constants.roles.*;
 
 
-public class training {
+public class Training {
     String uuid;
     String name;
     String teather;
     LocalDate date;
     List<String> ParticiantIDs;
 
-    public training(String uuid, String name) {
+    public Training(String uuid, String name) {
         this.uuid = uuid;
         this.name = name;
     }
 
-    public training(String uuid, String name, String teather, LocalDate date, List<String> particiantIDs) {
+    public Training(String uuid, String name, String teather, LocalDate date, List<String> particiantIDs) {
         this.uuid = uuid;
         this.name = name;
         this.teather = teather;

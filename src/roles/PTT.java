@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import course.AllCourses;
 import course.Course;
-import course.training;
+import course.Training;
 import system.Main;
+import system.Data.*;
+
 
 public class PTT extends Staff {
 
@@ -30,7 +31,7 @@ public class PTT extends Staff {
         FinishedTrainning = finishedTrainning;
     }
 
-    public List<String> getcourseList() {
+    public List<String> getCourseList() {
         return courseList;
     }
 
@@ -38,7 +39,7 @@ public class PTT extends Staff {
         this.courseList = courseList;
     }
 
-    public List<String> getFinishedTrainning() {
+    public List<String> getFinishedTrainings() {
         return FinishedTrainning;
     }
 
@@ -85,9 +86,9 @@ public class PTT extends Staff {
 
     @Override
     public void showFunctionality() {
-        AllCourses allCourses = new AllCourses();
-        Alltrainings alltrainings = new Alltrainings();
-        AllPTTs allPTTs = new AllPTTs();
+        DataCourses allCourses = new DataCourses();
+        DataTrainings alltrainings = new DataTrainings();
+        DataPTTs allPTTs = new DataPTTs();
         PTT selfPTT = allPTTs.findPTTByID(this.getId());       
 
         Scanner scanner = new Scanner(System.in);
@@ -143,7 +144,7 @@ public class PTT extends Staff {
                 case 6:
                     System.out.println("Please input the training ID");
                     String trainingId = scanner.next();
-                    training training = alltrainings.findTrainingByID(trainingId);
+                    Training training = alltrainings.findTrainingByID(trainingId);
                     if (training != null) {
                         training.Functionality(selfPTT.getrole(),scanner);
                     } else {

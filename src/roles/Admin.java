@@ -2,7 +2,7 @@ package roles;
 
 import static system.Constants.roles.RoleAdmin;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +11,7 @@ import java.util.Set;
 
 import course.*;
 import system.Main;
+import system.Data.*;
 
 public class Admin extends Staff {
 
@@ -24,10 +25,10 @@ public class Admin extends Staff {
 
     @Override
     public void showFunctionality() {
-        AllCourses allCourses = new AllCourses();
-        Alltrainings alltrainings = new Alltrainings();
-        AllCourseDIrectors allCourseDirectors = new AllCourseDIrectors();
-        AllPTTs allPTTs = new AllPTTs();
+        DataCourses allCourses = new DataCourses();
+        DataTrainings alltrainings = new DataTrainings();
+        DataCourseDIrectors allCourseDirectors = new DataCourseDIrectors();
+        DataPTTs allPTTs = new DataPTTs();
 
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -84,7 +85,7 @@ public class Admin extends Staff {
                 case 6:{
                     System.out.println("Please input the training ID");
                     String trainingId = scanner.next();
-                    training training = alltrainings.findTrainingByID(trainingId);
+                    Training training = alltrainings.findTrainingByID(trainingId);
                     if (training != null) {
                         Set<String> oldPTTIds = new HashSet<>(training.getParticiantIDs());
                         training.Functionality(this.getrole(),scanner);
@@ -131,7 +132,7 @@ public class Admin extends Staff {
                     String PTTId = scanner.next();
                     PTT PTT = allPTTs.findPTTByID(PTTId);
                     if (PTT != null) {
-                        allPTTs.deletePTT(PTTId);
+                        allPTTs.removePTT(PTT);
                         System.out.println("PTT deleted");
                     } else {
                         System.out.println("PTT not found");
@@ -140,7 +141,7 @@ public class Admin extends Staff {
                 case 10:{
                     System.out.println("Please input the training ID");
                     String trainingId = scanner.next();
-                    training training = alltrainings.findTrainingByID(trainingId);
+                    Training training = alltrainings.findTrainingByID(trainingId);
                     if (training != null) {
                         System.out.println("Training already exists");
                     } else {
@@ -157,10 +158,16 @@ public class Admin extends Staff {
                 }
         } while (choice != 0);
 
-        allCourses.saveAllCourses();
-        allCourseDirectors.saveAllCourseDirectors();
-        allPTTs.saveAllPTTs();
-        alltrainings.saveAllTrainings();
+   
+        try {
+            allCourses.saveAllCourses();
+            allCourseDirectors.saveAllCourseDirectors();
+            allPTTs.saveAllPTTs();
+            alltrainings.saveAllTrainings();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         scanner.close();
         Main.goBackToMain();
     }
