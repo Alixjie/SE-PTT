@@ -27,7 +27,7 @@ public class UserControl {
         } else {
             String[] userDebris = userString.split("\n");
             for (String userDebri : userDebris) {
-                System.out.println(userDebri);
+                //System.out.println(userDebri);
                 userAdd(userDebri);
             }
             return 1;

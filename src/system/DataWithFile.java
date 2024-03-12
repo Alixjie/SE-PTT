@@ -41,7 +41,7 @@ public class DataWithFile extends DataControl {
         FileWriter writer = null;
         try {
             File file = new File(name);
-            writer = new FileWriter(file, true);
+            writer = new FileWriter(file, false);
             writer.write(content);
         } catch (Exception e) {
             e.printStackTrace();

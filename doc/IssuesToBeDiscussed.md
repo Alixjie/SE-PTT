@@ -1,6 +1,0 @@
-Charles Chen
-
-position是否可以更名为role
-已经用不同的子类区分role了为什么还要有一个单独的role属性
-权限控制
-password hash，加盐

@@ -33,6 +33,8 @@ public class Admin extends Staff {
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
+            System.out.println();
+            System.out.println("------------------ main page------------------");
             System.out.println("You can choose the function by number");
             System.out.println("1. list all courses");
             System.out.println("2. list all trainings");
@@ -46,6 +48,10 @@ public class Admin extends Staff {
             System.out.println("10. add a new training");
             System.out.println("...");
             System.out.println("0. Exit");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 0 and 10.");
+                scanner.next(); // discard the non-integer input
+            }
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice){

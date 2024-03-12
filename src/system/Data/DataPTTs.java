@@ -1,6 +1,7 @@
 package system.Data;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -105,14 +106,24 @@ public class DataPTTs {
         String[] parts = pttString.split(",");
         String id = parts[0];
         String name = parts[1];
-        List<String> courseList = Arrays.asList(parts[2].split(";"));
-        List<String> finishedTraining = Arrays.asList(parts[3].split(";"));
+        List<String> courseList;
+        if (parts.length > 2 && !parts[2].equals("null")) {
+            courseList = Arrays.asList(parts[2].split(";"));
+        } else {
+            courseList = new ArrayList<>();
+        }
+        List<String> finishedTraining;
+        if (parts.length > 3 && !parts[3].equals("null")) {
+            finishedTraining = Arrays.asList(parts[3].split(";"));
+        } else {
+            finishedTraining = new ArrayList<>();
+        }
         return new PTT(id, name, courseList, finishedTraining);
     }
 
     public static String PTTToString(PTT ptt) {
-        String courseListString = String.join(";", ptt.getCourseList());
-        String finishedTrainingString = String.join(";", ptt.getFinishedTrainings());
+        String courseListString = (ptt.getCourseList() == null || ptt.getCourseList().isEmpty()) ? "null" : String.join(";", ptt.getCourseList());
+        String finishedTrainingString = (ptt.getFinishedTrainings() == null || ptt.getFinishedTrainings().isEmpty()) ? "null" : String.join(";", ptt.getFinishedTrainings());
         return ptt.getId() + "," + ptt.getName() + "," + courseListString + "," + finishedTrainingString;
     }
 }

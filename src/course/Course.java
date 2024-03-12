@@ -86,9 +86,15 @@ public class Course {
     private void CourseDirectorFunctionality(Scanner scanner){
         int choice;
         do {
+            System.out.println();
+            System.out.println("------------------ course page------------------Y");
             System.out.println("You can choose the function by number");
             System.out.println("1. change requirement");
             System.out.println("0. exit course page");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 0 and 10.");
+                scanner.next(); // discard the non-integer input
+            }
             choice = scanner.nextInt();
             scanner.nextLine(); // consume newline left-over
             switch (choice){
@@ -109,10 +115,16 @@ public class Course {
     private void AdminFunctionality(Scanner scanner){
         int choice;
         do {
+            System.out.println();
+            System.out.println("------------------ course page------------------Y");
             System.out.println("You can choose the function by number");
             System.out.println("1. set course director");
             System.out.println("2. set course teachers");
             System.out.println("0. exit course page");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 0 and 10.");
+                scanner.next(); // discard the non-integer input
+            }
             choice = scanner.nextInt();
             scanner.nextLine(); // consume newline left-over
             switch (choice){
@@ -141,9 +153,15 @@ public class Course {
     private void TeacherFunctionality(Scanner scanner){
         int choice;
         do {
+            System.out.println();
+            System.out.println("------------------ course page------------------Y");
             System.out.println("You can choose the function by number");
             System.out.println("1. view course info");
             System.out.println("0. exit");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 0 and 10.");
+                scanner.next(); // discard the non-integer input
+            }
             choice = scanner.nextInt();
             scanner.nextLine(); // consume newline left-over
             switch (choice){

@@ -1,6 +1,7 @@
 package system.Data;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -61,11 +62,17 @@ public class DataCourseDIrectors {
         String[] parts = String.split(",");
         String id = parts[0];
         String name = parts[1];
-        List<String> Courses = Arrays.asList(parts[2].split(";"));
+        List<String> Courses;
+        if (parts.length > 2 && !parts[2].equals("null")) {
+            Courses = Arrays.asList(parts[2].split(";"));
+        } else {
+            Courses = new ArrayList<>();
+        }
         return new CourseDirector(id, name, Courses);
     }
 
     public static String CourseDirectortoString(CourseDirector courseDirector) {
-        return courseDirector.getId() + "," + courseDirector.getName()  + "," +  String.join(";", courseDirector.getCourseList());
+        String coursesString = (courseDirector.getCourseList() == null || courseDirector.getCourseList().isEmpty()) ? "null" : String.join(";", courseDirector.getCourseList());
+        return courseDirector.getId() + "," + courseDirector.getName()  + "," +  coursesString;
     }
 }
