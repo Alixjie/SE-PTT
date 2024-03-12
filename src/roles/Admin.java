@@ -1,9 +1,16 @@
 package roles;
 
+import static system.Constants.roles.RoleAdmin;
+
 public class Admin extends Staff {
-    public Admin(String id, String name, String password) {
-        super(id, name, "Admin", password);
+    public Admin(String id, String name) {
+        super(id, name, RoleAdmin);
     }
 
-    // 可以添加一些特定于Admin的属性和方法
+    @Override
+    public void showFunctionality() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'showFunctionality'");
+    }
+
 }

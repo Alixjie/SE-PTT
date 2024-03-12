@@ -1,0 +1,5 @@
+1,math,1,adadada,3;4
+2,computer,2,sdd,1;2
+3,electric,1,afff,4;51,math,1,dadad,3;4
+2,computer,2,sdd,1;2
+3,electric,1,afff,4;5
