@@ -41,6 +41,8 @@ public class Main {
             switch (type) {
                 case RoleAdmin:
                     System.out.println("User Role: Admin");
+                    Admin admin = new Admin(userID);
+                    admin.showFunctionality();
                     break;
                 case RoleCourseDirector:
                     System.out.println("User Role: Course Director");
@@ -49,6 +51,8 @@ public class Main {
                     break;
                 case RolePTT:
                     System.out.println("User Role: Part Time Teacher");
+                    PTT ptt = new PTT(userID);
+                    ptt.showFunctionality();
                     break;
                 default:
                     System.out.println("User ID or Password Error!");

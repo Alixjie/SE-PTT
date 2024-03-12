@@ -57,7 +57,7 @@ public class Course {
         this.requirement = newRequirement;
     }
 
-    public void getCourseInfo() {
+    public void showCourseInfo() {
         System.out.println("Course ID: " + this.id);
         System.out.println("Course Name: " + this.name);
         System.out.println("Director ID: " + (this.directorId != null ? this.directorId : "N/A"));
@@ -88,7 +88,7 @@ public class Course {
 
 
     public void Functionality(roles roles, Scanner scanner) {
-        this.getCourseInfo();
+        this.showCourseInfo();
         if (roles == RoleCourseDirector ) {
             CourseDirectorFunctionality(scanner);
         } else if (roles == RoleAdmin) {
@@ -113,6 +113,10 @@ public class Course {
                     this.updateRequirement(requirement);
                     System.out.println("requirement has been updated");
                     break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Invalid input. Please enter a number between 0 and 1.");
             }
         } while (choice != 0);
     }
@@ -135,18 +139,16 @@ public class Course {
                     System.out.println("Director id has been updated");
                     break;
                 case 2:
-                    System.out.println("Enter teacher IDs (enter 'done' when finished): ");
-                    List<String> teacherIds = new ArrayList<>();
-                    while (true) {
-                        String input = scanner.nextLine();
-                        if ("done".equalsIgnoreCase(input)) {
-                            break;
-                        }
-                        teacherIds.add(input);
-                    }
-                    this.setTeacherIds(teacherIds);
+                    System.out.println("Please input the new teachers IDs, separated by spaces");
+                    String newteacjerid = scanner.nextLine();
+                    List<String> newteacerids = Arrays.asList(newteacjerid.split(" "));
+                    this.setTeacherIds(newteacerids);
                     System.out.println("Teachers have been updated");
                     break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Invalid input. Please enter a number between 0 and 2.");
             }
         } while (choice != 0);
     }
@@ -161,8 +163,12 @@ public class Course {
             scanner.nextLine(); // consume newline left-over
             switch (choice){
                 case 1:
-                    this.getCourseInfo();
+                    this.showCourseInfo();
                     break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Invalid input. Please enter a number between 0 and 1.");
             }
         } while (choice != 0);
     }

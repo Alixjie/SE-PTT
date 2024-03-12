@@ -10,7 +10,7 @@ import java.util.Scanner;
 import course.AllCourses;
 import course.Course;
 import system.Main;
-import system.Constants.roles;
+
 /**
  * Filename: Coursedirector.java
  * Author: Charles Chen
@@ -48,12 +48,21 @@ public class CourseDirector extends Staff{
         this.courseList = courseList;
     }
 
+    public void addCourse(String courseId){
+        if (!this.courseList.contains(courseId)) {
+        this.courseList.add(courseId);}
+    }
+
+    public void removeCourse(String courseId){
+        if (this.courseList.contains(courseId)) {
+            this.courseList.remove(courseId);}
+    }
 
     @Override
     public void showFunctionality() {
-        AllCourses courses = new AllCourses();
-        AllCourseDIrectors courseDirectors = new AllCourseDIrectors();
-        CourseDirector selfCourseDirector = courseDirectors.findCourseDirectorByID(this.getId());       
+        AllCourses allCourses = new AllCourses();
+        AllCourseDIrectors allCourseDirectors = new AllCourseDIrectors();
+        CourseDirector selfCourseDirector = allCourseDirectors.findCourseDirectorByID(this.getId());       
 
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -72,13 +81,13 @@ public class CourseDirector extends Staff{
                     selfCourseDirector.showselfinfo();
                     break;
                 case 2:
-                    courses.showAllCourses();
+                    allCourses.showAllCourses();
                     break;
                 case 3:
                     if (selfCourseDirector.courseList != null) {
                         List<String> courseNames = new ArrayList<>();
                         for (String courseId : selfCourseDirector.courseList) {
-                            Course course = courses.findCourseByID(courseId);
+                            Course course = allCourses.findCourseByID(courseId);
                             if (course != null) {
                                 courseNames.add(courseId + " - " + course.getName());
                             } else {
@@ -93,7 +102,7 @@ public class CourseDirector extends Staff{
                 case 4:
                     System.out.println("Please input the course ID");
                     String courseId = scanner.next();
-                    Course course = courses.findCourseByID(courseId);
+                    Course course = allCourses.findCourseByID(courseId);
                     if (course != null) {
                         course.Functionality(selfCourseDirector.getrole(),scanner);
                     } else {
@@ -107,7 +116,7 @@ public class CourseDirector extends Staff{
                 }
         } while (choice != 0);
 
-        courses.saveAllCourses();
+        allCourses.saveAllCourses();
         scanner.close();
         Main.goBackToMain();
     }
