@@ -1,2 +1,6 @@
-1,charles,1;2
-2,cc,123;3
+Director1,Jerry,COMPSCI1;COMPSCI2
+Director2,Kenneth,COMPSCI3;COMPSCI4
+Director3,Jose,COMPSCI5
+Director4,James,ENG1
+Director5,Thomas,ENG2;ENG3
+Director6,William,ENG4;ENG5

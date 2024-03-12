@@ -1,5 +1,10 @@
-1,math,1,adadada,3;4
-2,computer,2,sdd,1;2
-3,electric,1,afff,4;51,math,1,dadad,3;4
-2,computer,2,sdd,1;2
-3,electric,1,afff,4;5
+COMPSCI1,Web Development,Director1,requirement1,PTT1
+COMPSCI2,Computer Graphics,Director1,requirement2,PTT2
+COMPSCI3,Artificial Intelligence,Director2,requirementchange1,PTT3;PTT4
+COMPSCI4,Introduction to Programming,Director2,requirement4,PTT1
+COMPSCI5,Database Systems,Director3,requirement5,PTT5
+ENG1,Embedded Systems Design,Director4,requirement6,PTT6;PTT7
+ENG2,Communication Systems,Director5,requirement7,PTT7;PTT8
+ENG3,Analog Circuits,Director5,requirement8,PTT8;PTT9
+ENG4,Electronic Materials and Devices,Director6,requirement9,PTT9
+ENG5,Power Electronics,Director6,requirement10,PTT10

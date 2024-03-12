@@ -14,7 +14,7 @@ import static system.Constants.roles.*;
 public class Training {
     String uuid;
     String name;
-    String teather;
+    String teacher;
     LocalDate date;
     List<String> ParticiantIDs;
 
@@ -23,10 +23,10 @@ public class Training {
         this.name = name;
     }
 
-    public Training(String uuid, String name, String teather, LocalDate date, List<String> particiantIDs) {
+    public Training(String uuid, String name, String teacher, LocalDate date, List<String> particiantIDs) {
         this.uuid = uuid;
         this.name = name;
-        this.teather = teather;
+        this.teacher = teacher;
         this.date = date;
         ParticiantIDs = particiantIDs;
     }
@@ -39,8 +39,8 @@ public class Training {
         return name;
     }
 
-    public String getTeather() {
-        return teather;
+    public String getTeacher() {
+        return teacher;
     }
 
     public LocalDate getDate() {
@@ -51,8 +51,8 @@ public class Training {
         return ParticiantIDs;
     }
 
-    public void setTeather(String teather) {
-        this.teather = teather;
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
     public void setDate(LocalDate date) {
@@ -66,7 +66,7 @@ public class Training {
     public void showTrainingInfo() {
         System.out.println("Training ID: " + this.getUuid());
         System.out.println("Training name: " + this.getName());
-        System.out.println("Training teather: " + (this.getTeather() != null ? this.getTeather() : "N/A"));
+        System.out.println("Training teacher: " + (this.getTeacher() != null ? this.getTeacher() : "N/A"));
         System.out.println("Training date: " + (this.getDate() != null ? this.getDate().toString() : "N/A"));
         if (this.ParticiantIDs != null) {
             System.out.println("Training participants: " + String.join(", ", this.ParticiantIDs));
@@ -75,8 +75,8 @@ public class Training {
         }
     }
 
-    public void updatetraining(String newteather, LocalDate newdate, List<String> newParticiantIDs) {
-        this.teather = newteather;
+    public void updatetraining(String newteacher, LocalDate newdate, List<String> newParticiantIDs) {
+        this.teacher = newteacher;
         this.date = newdate;
         this.ParticiantIDs = newParticiantIDs;
     }
@@ -92,10 +92,16 @@ public class Training {
     private void AdminFunctionality(Scanner scanner) {
         int choice;
         do {
+            System.out.println();
+            System.out.println("------------------ training page------------------");
             System.out.println("You can choose the function by number");
             System.out.println("1. view training info");
             System.out.println("2. update training info");
             System.out.println("0. exit course page");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number between 0 and 10.");
+                scanner.next(); // discard the non-integer input
+            }
             choice = scanner.nextInt();
             scanner.nextLine(); // consume newline left-over
             switch (choice){
@@ -128,10 +134,16 @@ public class Training {
 
     private void TeacherFunctionality(Scanner scanner) {
         int choice;
+        do{
+        System.out.println();
+        System.out.println("------------------ training page------------------");
         System.out.println("You can choose the function by number");
         System.out.println("1. view training info");
         System.out.println("0. exit");
-        do{
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter a number between 0 and 10.");
+            scanner.next(); // discard the non-integer input
+        }
         choice = scanner.nextInt();
         scanner.nextLine(); // consume newline left-over
         switch (choice){

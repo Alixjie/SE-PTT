@@ -68,6 +68,6 @@ public class DataCourses {
     }
 
     public static String CoursetoString(Course course) {
-        return course.getId() + "," + course.getName() + "," + String.join(";", course.getTeacherIds()) + "," + String.join(";", course.getTeacherIds());
+        return course.getId() + "," + course.getName() + "," + course.getDirectorId()+ "," + course.getRequirement()+ ","+ String.join(";", course.getTeacherIds());
     }
 }
