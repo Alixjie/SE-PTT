@@ -1,12 +1,7 @@
+package system;
 import java.io.*;
 
-public abstract class DataControl {
-    public abstract String read(String name);
-
-    public abstract int write(String name, String content) throws IOException;
-}
-
-class DataWithFile extends DataControl {
+public class DataWithFile extends DataControl {
     public static DataWithFile dataWithFile;
 
     public static DataWithFile getInstance() {
@@ -46,7 +41,7 @@ class DataWithFile extends DataControl {
         FileWriter writer = null;
         try {
             File file = new File(name);
-            writer = new FileWriter(file, true);
+            writer = new FileWriter(file, false);
             writer.write(content);
         } catch (Exception e) {
             e.printStackTrace();

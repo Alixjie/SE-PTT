@@ -1,42 +1,67 @@
 package roles;
 
-import java.util.HashSet;
-import java.util.Set;
+import system.Constants.roles;
 
-public class Staff {
+public abstract class Staff {
     private String id;
     private String name;
-    private String role;
-    private String password;
-    protected Set<String> permissions;
+    private roles role;
 
-    private static final Set<String> STAFF_PERMISSIONS = Set.of("get_course_info");
+    public Staff(String id) {
+        this.id = id;
+    }
 
-    public Staff(String id, String name, String role, String password) {
+    public Staff(String id, String name, roles role) {
         this.id = id;
         this.name = name;
-        this.password = password;
         this.role = role;
-        this.permissions = new HashSet<>();
-        this.permissions.addAll(STAFF_PERMISSIONS);
+    }
+//    public void functionOne() {
+//    }
+//    public void functionTwo() {
+//    }
+
+    public abstract void showFunctionality();
+    // System.out.println("You can choose the function by number");
+    // System.out.println("1. FunctionOne");
+    // System.out.println("2. FunctionTwo");
+    // System.out.println("...");
+    // System.out.println("n. Exit");
+//    Scanner in = new Scanner(System.in);
+//    int choice = in.nextInt();
+//    switch (choice){
+//        case 1:
+//            FunctionOne();
+//            break;
+//        case 2:
+//            FunctionOne();
+//            break;
+//        case n:
+//            Main.goBackToMain();
+//    }
+
+
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public boolean checkPassword(String password) {
-        return this.password.equals(password);
+    public void setId(String id) {
+        this.id = id;
     }
-    public String getId() {
-        return id;
+
+    public void setrole(roles role) {
+        this.role = role;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getRole() {
-        return role;
+    public String getId() {
+        return id;
     }
 
-    public Set<String> getPermissions() {
-        return permissions;
+    public roles getrole() {
+        return role;
     }
 }
