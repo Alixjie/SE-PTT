@@ -13,3 +13,12 @@ test {
         showStandardStreams = true
     }
 }
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src'
+            exclude 'test/CoursedirectorTest.java'
+        }
+    }
+}
