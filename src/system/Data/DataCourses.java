@@ -1,22 +1,23 @@
-package course;
+package system.Data;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import course.Course;
 import system.*;
 
 
-public class AllCourses {
+public class DataCourses {
     private List<Course> courses;
 
 
 
-    public AllCourses() {
+    public DataCourses() {
         String String = DataWithFile.getInstance().read("Data/Courses.txt");
         String[] CoursesString = String.split("\n");
         courses = Arrays.stream(CoursesString)
-                .map(Course::fromString)
+                .map(DataCourses::StringToCourse)
                 .collect(Collectors.toList());
 
     }
@@ -48,16 +49,25 @@ public class AllCourses {
     }
 
     //TODO: add error handles
-    public void saveAllCourses() {
+    public void saveAllCourses() throws IOException {
         String content = courses.stream()
-                .map(Course::toString)
+                .map(DataCourses::CoursetoString)
                 .collect(Collectors.joining("\n"));
-        try {
             DataWithFile.getInstance().write("Data/Courses.txt", content);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        
     }
 
+    public static Course StringToCourse(String courseString) {
+        String[] parts = courseString.split(",");
+        String id = parts[0];
+        String name = parts[1];
+        String directorId = parts[2];
+        String requirement = parts[3];
+        List<String> teacherIds = Arrays.asList(parts[4].split(";"));
+        return new Course(id, name,directorId,requirement,teacherIds);
+    }
+
+    public static String CoursetoString(Course course) {
+        return course.getId() + "," + course.getName() + "," + String.join(";", course.getTeacherIds()) + "," + String.join(";", course.getTeacherIds());
+    }
 }

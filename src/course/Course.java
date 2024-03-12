@@ -1,5 +1,4 @@
 package course;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -71,20 +70,6 @@ public class Course {
         this.teacherIds = teacherIds;
     }
 
-    public static Course fromString(String courseString) {
-        String[] parts = courseString.split(",");
-        String id = parts[0];
-        String name = parts[1];
-        String directorId = parts[2];
-        String requirement = parts[3];
-        List<String> teacherIds = Arrays.asList(parts[4].split(";"));
-        return new Course(id, name,directorId,requirement,teacherIds);
-    }
-
-    @Override
-    public String toString() {
-        return this.id + "," + this.name + "," + this.directorId + "," + this.requirement + "," + String.join(";", this.teacherIds);
-    }
 
 
     public void Functionality(roles roles, Scanner scanner) {
