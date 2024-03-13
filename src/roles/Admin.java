@@ -74,12 +74,12 @@ public class Admin extends Staff {
                     if (course != null) {
 
                         String oldDirectorId = course.getDirectorId();
-                        Set<String> oldTeacherId = new HashSet<>(course.getTeacherIds());
+                        Set<String> oldTeacherId = course.getTeacherIds() != null ? new HashSet<>(course.getTeacherIds()) : new HashSet<>();
                         
-                        course.Functionality(this.getrole(),scanner);
+                        course.Functionality(RoleAdmin,scanner);
 
                         String newDirectorId = course.getDirectorId();
-                        Set<String> newTeacherId = new HashSet<>(course.getTeacherIds());
+                        Set<String> newTeacherId = course.getTeacherIds() != null ? new HashSet<>(course.getTeacherIds()) : new HashSet<>();
 
                         allPTTs.syncCourseUpdatePTT(course.getId(),oldTeacherId, newTeacherId);
                         allCourseDirectors.syncCourseUpdateDirector(course.getId(),oldDirectorId, newDirectorId);
@@ -89,13 +89,13 @@ public class Admin extends Staff {
                     }}
                     break;
                 case 6:{
-                    System.out.println("Please input the training ID");
+                     System.out.println("Please input the training ID");
                     String trainingId = scanner.next();
-                    Training training = alltrainings.findTrainingByID(trainingId);
+                   Training training = alltrainings.findTrainingByID(trainingId);
                     if (training != null) {
-                        Set<String> oldPTTIds = new HashSet<>(training.getParticiantIDs());
-                        training.Functionality(this.getrole(),scanner);
-                        Set<String> newPTTsIds = new HashSet<>(training.getParticiantIDs());
+                        Set<String> oldPTTIds = training.getParticiantIDs() != null ? new HashSet<>(training.getParticiantIDs()) : new HashSet<>();
+                        training.Functionality(RoleAdmin,scanner);
+                        Set<String> newPTTsIds = training.getParticiantIDs() != null ? new HashSet<>(training.getParticiantIDs()) : new HashSet<>();
                         allPTTs.syncTrainingUpdatePTT(training.getName(),oldPTTIds, newPTTsIds);
                     } else {
                         System.out.println("Training not found");

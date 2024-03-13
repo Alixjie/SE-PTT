@@ -27,8 +27,8 @@ public class PTT extends Staff {
 
     public PTT(String id, String name, List<String> courseList, List<String> finishedTrainning) {
         super(id, name,RolePTT);
-        this.courseList = courseList;
-        FinishedTrainning = finishedTrainning;
+        this.courseList = new ArrayList<>(courseList);
+        this.FinishedTrainning = new ArrayList<>(finishedTrainning);
     }
 
     public List<String> getCourseList() {
