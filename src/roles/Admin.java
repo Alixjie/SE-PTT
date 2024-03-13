@@ -76,7 +76,7 @@ public class Admin extends Staff {
                         String oldDirectorId = course.getDirectorId();
                         Set<String> oldTeacherId = new HashSet<>(course.getTeacherIds());
                         
-                        course.Functionality(this.getrole(),scanner);
+                        course.Functionality(RoleAdmin,scanner);
 
                         String newDirectorId = course.getDirectorId();
                         Set<String> newTeacherId = new HashSet<>(course.getTeacherIds());
@@ -94,7 +94,7 @@ public class Admin extends Staff {
                     Training training = alltrainings.findTrainingByID(trainingId);
                     if (training != null) {
                         Set<String> oldPTTIds = new HashSet<>(training.getParticiantIDs());
-                        training.Functionality(this.getrole(),scanner);
+                        training.Functionality(RoleAdmin,scanner);
                         Set<String> newPTTsIds = new HashSet<>(training.getParticiantIDs());
                         allPTTs.syncTrainingUpdatePTT(training.getName(),oldPTTIds, newPTTsIds);
                     } else {

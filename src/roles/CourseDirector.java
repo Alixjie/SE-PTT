@@ -37,7 +37,7 @@ public class CourseDirector extends Staff{
 
     public CourseDirector(String id, String name, List<String> courseList ) {
         super(id, name, RoleCourseDirector);
-        this.courseList = courseList;
+        this.courseList = new ArrayList<>(courseList);
     }
 
 
