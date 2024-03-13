@@ -53,9 +53,13 @@ public class DataTrainings {
         for (Training training : trainings) {
             System.out.println("Training ID: " + training.getUuid());
             System.out.println("Training Name: " + training.getName());
-            System.out.println("Training Teacher: " + training.getTeacher());
-            System.out.println("Training Date: " + training.getDate());
-            System.out.println("Training Participants: " + String.join(", ", training.getParticiantIDs().toString()));
+            System.out.println("Training Teacher: " + (training.getTeacher() != null ? training.getTeacher() : "N/A"));
+            System.out.println("Training Date: " + (training.getDate() != null ? training.getDate().toString() : "N/A"));
+            if (training.getParticiantIDs() != null && !training.getParticiantIDs().isEmpty()) {
+                System.out.println("Training Participants: " + String.join(", ", training.getParticiantIDs()));
+            } else {
+                System.out.println("Training Participants: N/A");
+            }
             System.out.println();
         }
     }

@@ -46,7 +46,11 @@ public class DataPTTs {
         for (PTT ptt : pttList) {
             System.out.println("PTT ID: " + ptt.getId());
             System.out.println("PTT Name: " + ptt.getName());
-            System.out.println("Course List: " + String.join(", ", ptt.getCourseList()));
+            if (ptt.getCourseList() != null) {
+                System.out.println("courses: " + String.join(", ", ptt.getCourseList()));
+            } else {
+                System.out.println("courses: N/A");
+            }
             System.out.println();
         }
     }
