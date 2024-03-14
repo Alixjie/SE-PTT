@@ -1,4 +1,5 @@
 package course;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -24,7 +25,7 @@ public class Course {
         this.name = name;
         this.directorId = directorId;
         this.requirement = requirement;
-        this.teacherIds = teacherIds;
+        this.teacherIds = new ArrayList<>(teacherIds);
     }
 
 

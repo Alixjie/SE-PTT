@@ -2,6 +2,8 @@ package course;
 
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -28,7 +30,7 @@ public class Training {
         this.name = name;
         this.teacher = teacher;
         this.date = date;
-        ParticiantIDs = particiantIDs;
+        ParticiantIDs = new ArrayList<>(particiantIDs);
     }
 
     public String getUuid() {
@@ -109,13 +111,19 @@ public class Training {
                     this.showTrainingInfo();
                     break;
                 case 2:
-                    scanner.nextLine(); // consume newline left-over
                     System.out.println("Enter new training teacher:");
                     String newTeacher = scanner.nextLine();
 
-                    System.out.println("Enter new training date (format: YYYY-MM-DD):");
-                    String dateString = scanner.nextLine();
-                    LocalDate newDate = LocalDate.parse(dateString);
+                    LocalDate newDate = null;
+                    while (newDate == null) {
+                        try {
+                            System.out.println("Enter new training date (format: YYYY-MM-DD):");
+                            String dateString = scanner.nextLine();
+                            newDate = LocalDate.parse(dateString);
+                        } catch (DateTimeParseException e) {
+                            System.out.println("Invalid date format. Please try again.");
+                        }
+                    }
 
                     System.out.println("Enter new participant IDs (sapce separated):");
                     String participantIdsString = scanner.nextLine();
